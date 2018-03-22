@@ -151,6 +151,17 @@ var buildViewMenu = function(settings) {
           }
         },
       },
+      {
+        label: 'Toggle Note Full Screen',
+        accelerator: 'Shift+CommandOrControl+F',
+        click(item, focusedWindow) {
+          if (focusedWindow) {
+            focusedWindow.webContents.send('appCommand', {
+              action: 'toggleFullscreen',
+            });
+          }
+        },
+      },
     ],
   };
 };

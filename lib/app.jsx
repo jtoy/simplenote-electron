@@ -175,7 +175,7 @@ export const App = connect(mapStateToProps, mapDispatchToProps)(
     }
 
     handleShortcut = event => {
-      const { ctrlKey, key, metaKey } = event;
+      const { ctrlKey, shiftKey, key, metaKey } = event;
 
       const cmdOrCtrl = ctrlKey || metaKey;
 
@@ -189,7 +189,7 @@ export const App = connect(mapStateToProps, mapDispatchToProps)(
       // }
 
       // focus search field
-      if (cmdOrCtrl && 'F' === key) {
+      if (cmdOrCtrl && !shiftKey && 'F' === key && !this.state.showFullscreen) {
         this.props.setSearchFocus();
 
         event.stopPropagation();
@@ -399,6 +399,7 @@ export const App = connect(mapStateToProps, mapDispatchToProps)(
         'note-open': selectedNote,
         'note-info-open': state.showNoteInfo,
         'navigation-open': state.showNavigation,
+        'note-fullscreen': state.showFullscreen,
         'is-electron': isElectron(),
         'is-macos': isMacApp,
       });
@@ -421,16 +422,18 @@ export const App = connect(mapStateToProps, mapDispatchToProps)(
               {state.showNavigation && (
                 <NavigationBar noteBucket={noteBucket} tagBucket={tagBucket} />
               )}
-              <div className="source-list theme-color-bg theme-color-fg">
-                <SearchBar noteBucket={noteBucket} />
-                {hasNotes ? (
-                  <NoteList noteBucket={noteBucket} />
-                ) : (
-                  <div className="placeholder-note-list">
-                    <span>No Notes</span>
-                  </div>
-                )}
-              </div>
+              {state.showFullscreen || (
+                <div className="source-list theme-color-bg theme-color-fg">
+                  <SearchBar noteBucket={noteBucket} />
+                  {hasNotes ? (
+                    <NoteList noteBucket={noteBucket} />
+                  ) : (
+                    <div className="placeholder-note-list">
+                      <span>No Notes</span>
+                    </div>
+                  )}
+                </div>
+              )}
               {selectedNote &&
                 hasNotes && (
                   <NoteEditor
