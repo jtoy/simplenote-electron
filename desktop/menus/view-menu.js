@@ -127,6 +127,17 @@ var buildViewMenu = function(settings) {
         ].map(buildRadioGroup(equalTo(settings.theme))),
       },
       {
+        label: 'Toggle &Tags',
+        accelerator: 'CommandOrControl+T',
+        click(item, focusedWindow) {
+          if (focusedWindow) {
+            focusedWindow.webContents.send('appCommand', {
+              action: 'toggleNavigation',
+            });
+          }
+        },
+      },
+      {
         label: 'T&oggle Full Screen',
         accelerator: (function() {
           if (process.platform === 'darwin') {

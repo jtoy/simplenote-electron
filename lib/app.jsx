@@ -179,14 +179,14 @@ export const App = connect(mapStateToProps, mapDispatchToProps)(
 
       const cmdOrCtrl = ctrlKey || metaKey;
 
-      // open tag list
-      if (cmdOrCtrl && 'T' === key && !this.state.showNavigation) {
-        this.props.openTagList();
+      // // open tag list
+      // if (cmdOrCtrl && 'T' === key && !this.state.showNavigation) {
+      //   this.props.openTagList();
 
-        event.stopPropagation();
-        event.preventDefault();
-        return false;
-      }
+      //   event.stopPropagation();
+      //   event.preventDefault();
+      //   return false;
+      // }
 
       // focus search field
       if (cmdOrCtrl && 'F' === key) {
