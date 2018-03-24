@@ -93,23 +93,23 @@ export class NoteEditor extends Component {
       return false;
     }
 
-    // toggle between tag editor and note editor
-    if (cmdOrCtrl && 't' === key && this.props.isEditorActive) {
-      // prefer focusing the edit field first
-      if (!this.editFieldHasFocus()) {
-        this.focusNoteEditor && this.focusNoteEditor();
+    // // toggle between tag editor and note editor
+    // if (cmdOrCtrl && 't' === key && this.props.isEditorActive) {
+    //   // prefer focusing the edit field first
+    //   if (!this.editFieldHasFocus()) {
+    //     this.focusNoteEditor && this.focusNoteEditor();
 
-        event.stopPropagation();
-        event.preventDefault();
-        return false;
-      } else if (!this.tagFieldHasFocus()) {
-        this.focusTagField && this.focusTagField();
+    //     event.stopPropagation();
+    //     event.preventDefault();
+    //     return false;
+    //   } else if (!this.tagFieldHasFocus()) {
+    //     this.focusTagField && this.focusTagField();
 
-        event.stopPropagation();
-        event.preventDefault();
-        return false;
-      }
-    }
+    //     event.stopPropagation();
+    //     event.preventDefault();
+    //     return false;
+    //   }
+    // }
 
     return true;
   };

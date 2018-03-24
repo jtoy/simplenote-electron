@@ -120,6 +120,7 @@ const mapStateToProps = ({ appState: state }) => ({
   dialogs: state.dialogs,
   selectedTag: state.tag,
   showNavigation: state.showNavigation,
+  showFullscreen: state.showFullscreen,
   showTrash: state.showTrash,
 });
 
